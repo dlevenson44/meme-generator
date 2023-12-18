@@ -26,9 +26,18 @@
   width: 260px;
 }
 
+.img-container {
+  height: 350px;
+  width: 350px;
+}
+
 .url-image {
   border-radius: 0.25rem;
   object-fit: contain;
+}
+
+.scale-img-input {
+  width: 25%;
 }
 
 
