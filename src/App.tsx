@@ -6,6 +6,27 @@ interface AppState {
 	imgUrl: string
 	error: boolean
 }
+const fileTypeValidation = (url: string): boolean => {
+	const validFileTypes: string[] = ['.png', '.jpg', '.jpeg', '.gif']
+	let validCheck = false
+	validFileTypes.forEach(type => {
+		const capitalized = type.toUpperCase()
+		if (url.includes(type) || url.includes(capitalized)) {
+			validCheck = true
+		}
+	})
+	return validCheck
+}
+
+const imageUrlValidator = (url: string): boolean => {
+	const isValidUrl = validator.isURL(url, {
+		protocols: ['http', 'https'],
+		require_tld: true,
+	})
+	const isImgUrl = fileTypeValidation(url)
+	console.log(isValidUrl && isImgUrl, isValidUrl, isImgUrl)
+	return isValidUrl && isImgUrl
+}
 
 const App: React.FC = () => {
 	const [state, setState] = React.useState<AppState>({
@@ -15,10 +36,7 @@ const App: React.FC = () => {
 
 	React.useEffect(() => {
 		if (state.imgUrl.length) {
-			const isValidImageUrl = validator.isURL(state.imgUrl, {
-				protocols: ['http', 'https'],
-				require_tld: true,
-			})
+			const isValidImageUrl = imageUrlValidator(state.imgUrl)
 			setState({ ...state, error: !isValidImageUrl })
 		} else {
 			setState({ ...state, error: false })
@@ -47,7 +65,8 @@ const App: React.FC = () => {
 			<div>
 				{!state.error && !!state.imgUrl.length && (
 					<img
-						alt="Image Error"
+						className="url-image"
+						alt="Broken Image :("
 						height={350}
 						width={350}
 						src={state.imgUrl}
