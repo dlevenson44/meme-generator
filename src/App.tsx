@@ -1,18 +1,20 @@
 import React from 'react'
 import './App.css'
 
-import { TopContent } from './components'
+import { TopContent, ImageActionControls } from './components'
 import { imageUrlValidator } from './helpers/validations'
 
 interface AppState {
 	imgUrl: string
 	error: boolean
+	rotation: number
 }
 
 const App: React.FC = () => {
 	const [state, setState] = React.useState<AppState>({
 		imgUrl: '',
 		error: false,
+		rotation: 0
 	})
 
 	React.useEffect(() => {
@@ -38,14 +40,22 @@ const App: React.FC = () => {
 				error={state.error}
 			/>
 			<div>
+				<ImageActionControls
+					onLeftRotateClick={() => setState({ ...state, rotation: state.rotation - 90 })}
+					onRightRotateClick={() => setState({ ...state, rotation: state.rotation + 90 })}
+				/>
 				{!state.error && !!state.imgUrl.length && (
-					<img
-						className="url-image"
-						alt="Broken Image :("
-						height={350}
-						width={350}
-						src={state.imgUrl}
-					/>
+					<div>
+						{/* <ImageActionControls /> */}
+						<img
+							className="url-image"
+							style={{ transform: `rotate(${state.rotation}deg)` }}
+							alt="Broken Image :("
+							height={350}
+							width={350}
+							src={state.imgUrl}
+						/>
+					</div>
 				)}
 			</div>
 		</div>
