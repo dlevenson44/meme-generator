@@ -46,6 +46,7 @@ module.exports = {
 		'semi': [
 			'warn',
 			'never'
-		]
+		],
+		'@typescript-eslint/no-unused-vars': 'warn'
 	}
 }
