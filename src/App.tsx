@@ -12,14 +12,17 @@ interface AppState {
 	mirrorImg: boolean
 }
 
+const initialState = {
+	// imgUrl: '',
+	imgUrl: 'https://hips.hearstapps.com/hmg-prod/images/little-cute-maltipoo-puppy-royalty-free-image-1652926025.jpg?crop=0.444xw:1.00xh;0.129xw,0&resize=980:*',
+	error: false,
+	rotation: 0,
+	imgScale: 100,
+	mirrorImg: false,
+}
+
 const App: React.FC = () => {
-	const [state, setState] = React.useState<AppState>({
-		imgUrl: '',
-		error: false,
-		rotation: 0,
-		imgScale: 100,
-		mirrorImg: false,
-	})
+	const [state, setState] = React.useState<AppState>(initialState)
 
 	React.useEffect(() => {
 		if (state.imgUrl.length) {
@@ -63,6 +66,7 @@ const App: React.FC = () => {
 							onScaleChange={(e) => handleScaleChange(e)}
 							imgScale={state.imgScale}
 							onMirrorClick={() => setState({ ...state, mirrorImg: !state.mirrorImg })}
+							onResetClick={() => setState(initialState)}
 						/>
 						<div className="img-container">
 							<img

@@ -9,6 +9,7 @@ interface ImageActionControlsProps {
   onScaleChange: (e: React.FormEvent<HTMLInputElement>) => void
   imgScale: number
 	onMirrorClick: () => void
+	onResetClick: () => void
 }
 
 const ImageActionControls: React.FC<ImageActionControlsProps> = ({
@@ -17,6 +18,7 @@ const ImageActionControls: React.FC<ImageActionControlsProps> = ({
 	onScaleChange,
 	imgScale,
 	onMirrorClick,
+	onResetClick,
 }) => {
 	return (
 		<div>
@@ -31,6 +33,7 @@ const ImageActionControls: React.FC<ImageActionControlsProps> = ({
 			/>
 			<span>%</span>
 			<button title="Mirror Image" onClick={onMirrorClick}><GoMirror /></button>
+			<button title="Reset Image" onClick={onResetClick}>Reset</button>
 		</div>
 	)
 }
