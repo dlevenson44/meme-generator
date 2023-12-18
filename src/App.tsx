@@ -1,31 +1,12 @@
 import React from 'react'
-import validator from 'validator'
 import './App.css'
+
+import { TopContent } from './components'
+import { imageUrlValidator } from './helpers/validations'
 
 interface AppState {
 	imgUrl: string
 	error: boolean
-}
-const fileTypeValidation = (url: string): boolean => {
-	const validFileTypes: string[] = ['.png', '.jpg', '.jpeg', '.gif']
-	let validCheck = false
-	validFileTypes.forEach(type => {
-		const capitalized = type.toUpperCase()
-		if (url.includes(type) || url.includes(capitalized)) {
-			validCheck = true
-		}
-	})
-	return validCheck
-}
-
-const imageUrlValidator = (url: string): boolean => {
-	const isValidUrl = validator.isURL(url, {
-		protocols: ['http', 'https'],
-		require_tld: true,
-	})
-	const isImgUrl = fileTypeValidation(url)
-	console.log(isValidUrl && isImgUrl, isValidUrl, isImgUrl)
-	return isValidUrl && isImgUrl
 }
 
 const App: React.FC = () => {
@@ -51,17 +32,11 @@ const App: React.FC = () => {
 
 	return (
 		<div className="App">
-			<div className="top-content">
-				<h3 className="header">Meme Maker</h3>
-				<input
-					className="url-input"
-					type="text"
-					placeholder="Enter Image URL To Get Started!"
-					onChange={(e) => handleChange(e)}
-					value={state.imgUrl}
-				/>
-				{state.error && <p className="error-text">Invalid Image URL, Meme Cannot Be Made!</p>}
-			</div>
+			<TopContent
+				onChange={(e) => handleChange(e)}
+				imgUrl={state.imgUrl}
+				error={state.error}
+			/>
 			<div>
 				{!state.error && !!state.imgUrl.length && (
 					<img
