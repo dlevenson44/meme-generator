@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { GoMirror } from 'react-icons/go'
 import { MdOutlineRotateLeft, MdOutlineRotateRight } from 'react-icons/md'
 
 interface ImageActionControlsProps {
@@ -7,6 +8,7 @@ interface ImageActionControlsProps {
   onRightRotateClick: () => void
   onScaleChange: (e: React.FormEvent<HTMLInputElement>) => void
   imgScale: number
+	onMirrorClick: () => void
 }
 
 const ImageActionControls: React.FC<ImageActionControlsProps> = ({
@@ -14,6 +16,7 @@ const ImageActionControls: React.FC<ImageActionControlsProps> = ({
 	onRightRotateClick,
 	onScaleChange,
 	imgScale,
+	onMirrorClick,
 }) => {
 	return (
 		<div>
@@ -27,6 +30,7 @@ const ImageActionControls: React.FC<ImageActionControlsProps> = ({
 				value={imgScale}
 			/>
 			<span>%</span>
+			<button title="Mirror Image" onClick={onMirrorClick}><GoMirror /></button>
 		</div>
 	)
 }

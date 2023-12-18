@@ -9,6 +9,7 @@ interface AppState {
 	error: boolean
 	rotation: number
 	imgScale: number
+	mirrorImg: boolean
 }
 
 const App: React.FC = () => {
@@ -16,7 +17,8 @@ const App: React.FC = () => {
 		imgUrl: '',
 		error: false,
 		rotation: 0,
-		imgScale: 100
+		imgScale: 100,
+		mirrorImg: false,
 	})
 
 	React.useEffect(() => {
@@ -53,20 +55,20 @@ const App: React.FC = () => {
 				error={state.error}
 			/>
 			<div>
-				<ImageActionControls
-					onLeftRotateClick={() => setState({ ...state, rotation: state.rotation - 90 })}
-					onRightRotateClick={() => setState({ ...state, rotation: state.rotation + 90 })}
-					onScaleChange={(e) => handleScaleChange(e)}
-					imgScale={state.imgScale}
-				/>
 				{!state.error && !!state.imgUrl.length && (
 					<div>
-						{/* <ImageActionControls /> */}
+						<ImageActionControls
+							onLeftRotateClick={() => setState({ ...state, rotation: state.rotation - 90 })}
+							onRightRotateClick={() => setState({ ...state, rotation: state.rotation + 90 })}
+							onScaleChange={(e) => handleScaleChange(e)}
+							imgScale={state.imgScale}
+							onMirrorClick={() => setState({ ...state, mirrorImg: !state.mirrorImg })}
+						/>
 						<div className="img-container">
 							<img
 								className="url-image"
 								style={{
-									transform: `rotate(${state.rotation}deg)`,
+									transform: `rotate(${state.rotation}deg) scaleX(${state.mirrorImg ? 1 : -1})`,
 									maxHeight: `${state.imgScale}%`,
 									maxWidth: `${state.imgScale}%`
 								}}
