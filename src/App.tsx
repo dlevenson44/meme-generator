@@ -57,32 +57,30 @@ const App: React.FC = () => {
 				imgUrl={state.imgUrl}
 				error={state.error}
 			/>
-			<div>
-				{!state.error && !!state.imgUrl.length && (
-					<div>
-						<ImageActionControls
-							onLeftRotateClick={() => setState({ ...state, rotation: state.rotation - 90 })}
-							onRightRotateClick={() => setState({ ...state, rotation: state.rotation + 90 })}
-							onScaleChange={(e) => handleScaleChange(e)}
-							imgScale={state.imgScale}
-							onMirrorClick={() => setState({ ...state, mirrorImg: !state.mirrorImg })}
-							onResetClick={() => setState(initialState)}
+			{!state.error && !!state.imgUrl.length && (
+				<div className="content-container">
+					<ImageActionControls
+						onLeftRotateClick={() => setState({ ...state, rotation: state.rotation - 90 })}
+						onRightRotateClick={() => setState({ ...state, rotation: state.rotation + 90 })}
+						onScaleChange={(e) => handleScaleChange(e)}
+						imgScale={state.imgScale}
+						onMirrorClick={() => setState({ ...state, mirrorImg: !state.mirrorImg })}
+						onResetClick={() => setState(initialState)}
+					/>
+					<div className="img-container">
+						<img
+							className="url-image"
+							style={{
+								transform: `rotate(${state.rotation}deg) scaleX(${state.mirrorImg ? 1 : -1})`,
+								maxHeight: `${state.imgScale}%`,
+								maxWidth: `${state.imgScale}%`
+							}}
+							alt="Broken Image :("
+							src={state.imgUrl}
 						/>
-						<div className="img-container">
-							<img
-								className="url-image"
-								style={{
-									transform: `rotate(${state.rotation}deg) scaleX(${state.mirrorImg ? 1 : -1})`,
-									maxHeight: `${state.imgScale}%`,
-									maxWidth: `${state.imgScale}%`
-								}}
-								alt="Broken Image :("
-								src={state.imgUrl}
-							/>
-						</div>
 					</div>
-				)}
-			</div>
+				</div>
+			)}
 		</div>
 	)
 }
