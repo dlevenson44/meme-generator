@@ -54,8 +54,8 @@ const App: React.FC = () => {
 
 	const handleScaleChange = (e: React.FormEvent<HTMLInputElement>) => {
 		const castValue = Number(e.currentTarget.value)
-		// Keep image scaling between 0 and 200%
-		if ((castValue <= 200 && castValue >= 0)) {
+		// Keep image scaling between 50 and 100%
+		if ((castValue <= 100 && castValue >= 50)) {
 			setState({
 				...state,
 				imgScale: castValue,

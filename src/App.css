@@ -63,7 +63,6 @@
 }
 
 .img-container > .bottom {
-  bottom: 22.5rem;
   width: 25%;
   left: 37%
 }
@@ -71,6 +70,7 @@
 .url-image {
   border-radius: 0.25rem;
   object-fit: contain;
+  margin: 0 auto;
 }
 
 .actions-container {
