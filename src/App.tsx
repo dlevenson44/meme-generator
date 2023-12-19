@@ -96,8 +96,7 @@ const App: React.FC = () => {
 						setBottomColor={setBottomColor}
 					/>
 					<ImageActionControls
-						onLeftRotateClick={() => setState({ ...state, rotation: state.rotation - 90 })}
-						onRightRotateClick={() => setState({ ...state, rotation: state.rotation + 90 })}
+						onRotateClick={() => setState({ ...state, rotation: state.rotation + 180 })}
 						onScaleChange={(e) => handleScaleChange(e)}
 						imgScale={state.imgScale}
 						onMirrorClick={() => setState({ ...state, mirrorImg: !state.mirrorImg })}

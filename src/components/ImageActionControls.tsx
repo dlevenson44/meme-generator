@@ -1,11 +1,10 @@
 import React from 'react'
 
 import { GoMirror } from 'react-icons/go'
-import { MdOutlineRotateLeft, MdOutlineRotateRight } from 'react-icons/md'
+import { MdOutlineRotateRight } from 'react-icons/md'
 
 interface ImageActionControlsProps {
-  onLeftRotateClick: () => void
-  onRightRotateClick: () => void
+  onRotateClick: () => void
   onScaleChange: (e: React.FormEvent<HTMLInputElement>) => void
   imgScale: number
 	onMirrorClick: () => void
@@ -13,8 +12,7 @@ interface ImageActionControlsProps {
 }
 
 const ImageActionControls: React.FC<ImageActionControlsProps> = ({
-	onLeftRotateClick,
-	onRightRotateClick,
+	onRotateClick,
 	onScaleChange,
 	imgScale,
 	onMirrorClick,
@@ -24,14 +22,11 @@ const ImageActionControls: React.FC<ImageActionControlsProps> = ({
 		<div className="actions-container">
 			<h4>Image Control Tools</h4>
 			<div className="rotate-container">
-				<button className="rotate-buttons" title="Rotate Left" onClick={onLeftRotateClick}>
-					Rotate Left{' '}<MdOutlineRotateLeft />
-				</button>
 				<button className="rotate-buttons" title="Mirror Image" onClick={onMirrorClick}>
 					Mirror Image {'  '}<GoMirror />
 				</button>
-				<button className="rotate-buttons" title="Rotate Right" onClick={onRightRotateClick}>
-					Rotate Right{' '}<MdOutlineRotateRight />
+				<button className="rotate-buttons" title="Rotate Right" onClick={onRotateClick}>
+					Rotate{' '}<MdOutlineRotateRight />
 				</button>
 			</div>
 			<div className="scale-reset-controls">

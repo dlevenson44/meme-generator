@@ -31,8 +31,12 @@ const MemeContent: React.FC<MemeContentProps> = ({
 				alt="Broken Image :("
 				src={imgUrl}
 			/>
-			<h2 className="top" style={{ color: topColor.hex }}>{topText}</h2>
-			<h2 className="bottom" style={{ color: bottomColor.hex }}>{bottomText}</h2>
+			<h2 className="top" style={{ color: topColor.hex, transform: `rotate(${rotation}deg)` }}>
+				{topText}
+			</h2>
+			<h2 className="bottom" style={{ color: bottomColor.hex, transform: `rotate(${rotation}deg)` }}>
+				{bottomText}
+			</h2>
 		</div>
 	)
 }
