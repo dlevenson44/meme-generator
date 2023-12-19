@@ -21,7 +21,7 @@ const ImageActionControls: React.FC<ImageActionControlsProps> = ({
 	onResetClick,
 }) => {
 	return (
-		<div>
+		<div className="actions-container">
 			<button title="Rotate Left" onClick={onLeftRotateClick}><MdOutlineRotateLeft /></button>
 			<button title="Rotate Right" onClick={onRightRotateClick}><MdOutlineRotateRight /></button>
 			<input

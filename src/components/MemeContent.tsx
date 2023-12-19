@@ -9,6 +9,8 @@ const MemeContent: React.FC<MemeContentProps> = ({
 	rotation,
 	imgScale,
 	mirrorImg,
+	topText,
+	bottomText
 }) => {
 	return (
 		<div className="img-container">
@@ -22,6 +24,8 @@ const MemeContent: React.FC<MemeContentProps> = ({
 				alt="Broken Image :("
 				src={imgUrl}
 			/>
+			<h2 className='top'>{topText}</h2>
+			<h2 className='bottom'>{bottomText}</h2>
 		</div>
 	)
 }

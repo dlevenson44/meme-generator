@@ -1,7 +1,7 @@
 import React from 'react'
 import './App.css'
 
-import { TopContent, ImageActionControls, MemeContent } from './components'
+import { TopContent, ImageActionControls, MemeContent, MemeTextControl } from './components'
 import { imageUrlValidator } from './helpers/validations'
 
 export interface AppState {
@@ -10,6 +10,8 @@ export interface AppState {
 	rotation: number
 	imgScale: number
 	mirrorImg: boolean
+	topText: string
+	bottomText: string
 }
 
 const initialState = {
@@ -18,6 +20,8 @@ const initialState = {
 	rotation: 0,
 	imgScale: 100,
 	mirrorImg: false,
+	topText: 'ENTER TOP TEXT HERE',
+	bottomText: 'ENTER BOTTOM TEXT HERE',
 }
 
 const App: React.FC = () => {
@@ -49,6 +53,12 @@ const App: React.FC = () => {
 		}
 	}
 
+	const handleMemeTextChange = (e: React.FormEvent<HTMLInputElement>) => {
+		if (e.currentTarget.value.length <= 140) {
+			setState({ ...state, [e.currentTarget.name]: e.currentTarget.value })
+		}
+	}
+
 	return (
 		<div className="App">
 			<TopContent
@@ -58,6 +68,14 @@ const App: React.FC = () => {
 			/>
 			{!state.error && !!state.imgUrl.length && (
 				<div className="content-container">
+					<MemeContent
+						imgUrl={state.imgUrl}
+						rotation={state.rotation}
+						imgScale={state.imgScale}
+						mirrorImg={state.mirrorImg}
+						topText={state.topText}
+						bottomText={state.bottomText}
+					/>
 					<ImageActionControls
 						onLeftRotateClick={() => setState({ ...state, rotation: state.rotation - 90 })}
 						onRightRotateClick={() => setState({ ...state, rotation: state.rotation + 90 })}
@@ -66,11 +84,10 @@ const App: React.FC = () => {
 						onMirrorClick={() => setState({ ...state, mirrorImg: !state.mirrorImg })}
 						onResetClick={() => setState(initialState)}
 					/>
-					<MemeContent
-						imgUrl={state.imgUrl}
-						rotation={state.rotation}
-						imgScale={state.imgScale}
-						mirrorImg={state.mirrorImg}
+					<MemeTextControl
+						onChange={handleMemeTextChange}
+						topText={state.topText}
+						bottomText={state.bottomText}
 					/>
 				</div>
 			)}
