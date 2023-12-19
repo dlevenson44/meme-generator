@@ -1,4 +1,8 @@
 import React from 'react'
+
+import { useColor } from 'react-color-palette'
+import 'react-color-palette/css'
+
 import './App.css'
 
 import { TopContent, ImageActionControls, MemeContent, MemeTextControl } from './components'
@@ -21,10 +25,14 @@ const initialState = {
 	imgScale: 100,
 	mirrorImg: false,
 	topText: 'ENTER TOP TEXT HERE',
+	topColor: '#FFFFFF',
 	bottomText: 'ENTER BOTTOM TEXT HERE',
+	bottomColor: '#FFFFFF',
 }
 
 const App: React.FC = () => {
+	const [topColor, setTopColor] = useColor(initialState.topColor)
+	const [bottomColor, setBottomColor] = useColor(initialState.bottomColor)
 	const [state, setState] = React.useState<AppState>(initialState)
 
 	React.useEffect(() => {
@@ -75,6 +83,8 @@ const App: React.FC = () => {
 						mirrorImg={state.mirrorImg}
 						topText={state.topText}
 						bottomText={state.bottomText}
+						topColor={topColor}
+						bottomColor={bottomColor}
 					/>
 					<ImageActionControls
 						onLeftRotateClick={() => setState({ ...state, rotation: state.rotation - 90 })}
@@ -87,7 +97,12 @@ const App: React.FC = () => {
 					<MemeTextControl
 						onChange={handleMemeTextChange}
 						topText={state.topText}
+						topColor={topColor}
+						setTopColor={setTopColor}
 						bottomText={state.bottomText}
+						bottomColor={bottomColor}
+						setBottomColor={setBottomColor}
+						// displayBottomPalette={displayBottomPalette}
 					/>
 				</div>
 			)}

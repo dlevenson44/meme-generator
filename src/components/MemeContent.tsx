@@ -1,8 +1,13 @@
 import React from 'react'
 
+import type { IColor } from 'react-color-palette'
+
 import type { AppState } from '../App'
 
-type MemeContentProps = Omit<AppState, 'error'>
+interface MemeContentProps extends Omit<AppState, 'error'> {
+	topColor: IColor
+	bottomColor: IColor
+}
 
 const MemeContent: React.FC<MemeContentProps> = ({
 	imgUrl,
@@ -10,7 +15,9 @@ const MemeContent: React.FC<MemeContentProps> = ({
 	imgScale,
 	mirrorImg,
 	topText,
-	bottomText
+	bottomText,
+	topColor,
+	bottomColor,
 }) => {
 	return (
 		<div className="img-container">
@@ -24,8 +31,8 @@ const MemeContent: React.FC<MemeContentProps> = ({
 				alt="Broken Image :("
 				src={imgUrl}
 			/>
-			<h2 className='top'>{topText}</h2>
-			<h2 className='bottom'>{bottomText}</h2>
+			<h2 className="top" style={{ color: topColor.hex }}>{topText}</h2>
+			<h2 className="bottom" style={{ color: bottomColor.hex }}>{bottomText}</h2>
 		</div>
 	)
 }

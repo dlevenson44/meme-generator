@@ -63,7 +63,8 @@
 }
 
 .img-container > .bottom {
-  bottom: 15rem;
+  bottom: 22.5rem;
+  width: 25%;
 }
 .url-image {
   border-radius: 0.25rem;
@@ -87,12 +88,19 @@
 .meme-text-control {
   width: 75%;
   font-size: 100%;
+  margin-right: 8px;
 }
 
 .text-control-container {
   display: flex;
   flex-direction: column;
   padding: 16px;
+}
+
+.text-control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #top-text-control {
