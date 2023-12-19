@@ -19,7 +19,9 @@ export interface AppState {
 }
 
 const initialState = {
-	imgUrl: 'https://hips.hearstapps.com/hmg-prod/images/little-cute-maltipoo-puppy-royalty-free-image-1652926025.jpg?crop=0.444xw:1.00xh;0.129xw,0&resize=980:*',
+	// sample img below
+	// imgUrl: 'https://hips.hearstapps.com/hmg-prod/images/little-cute-maltipoo-puppy-royalty-free-image-1652926025.jpg?crop=0.444xw:1.00xh;0.129xw,0&resize=980:*',
+	imgUrl: '',
 	error: false,
 	rotation: 0,
 	imgScale: 100,
