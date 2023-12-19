@@ -18,6 +18,5 @@ export const imageUrlValidator = (url: string): boolean => {
 		require_tld: true,
 	})
 	const isImgUrl = fileTypeValidation(url)
-	console.log(isValidUrl && isImgUrl, isValidUrl, isImgUrl)
 	return isValidUrl && isImgUrl
 }

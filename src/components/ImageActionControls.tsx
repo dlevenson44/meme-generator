@@ -39,17 +39,10 @@ const ImageActionControls: React.FC<ImageActionControlsProps> = ({
 					style={{ marginRight: '8px' }}
 				/>
 				<span className="input-end-adornment">%</span>
-				<button title="Reset Image" onClick={onResetClick} style={{ marginLeft: '8px' }}>Reset</button>
+				<button title="Reset Image" onClick={onResetClick} style={{ marginLeft: '8px' }}>Reset Controls</button>
 			</div>
 		</div>
 	)
 }
-
-/**
- *     width: 20%;
-    position: absolute;
-    margin-left: 40%;
-    margin-top: 30%;
- */
 
 export default ImageActionControls

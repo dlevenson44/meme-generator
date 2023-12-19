@@ -95,15 +95,3 @@ const MemeTextControl: React.FC<MemeTextControlProps> = ({
 }
 
 export default MemeTextControl
-
-
-/**
- * import { ColorPicker, useColor } from "react-color-palette";
-import "react-color-palette/css";
-
-export function App() {
-  const [color, setColor] = useColor("#561ecb");
-
-  return <ColorPicker color={color} onChange={setColor} />;
-}
- */
