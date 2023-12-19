@@ -86,14 +86,6 @@ const App: React.FC = () => {
 						topColor={topColor}
 						bottomColor={bottomColor}
 					/>
-					<ImageActionControls
-						onLeftRotateClick={() => setState({ ...state, rotation: state.rotation - 90 })}
-						onRightRotateClick={() => setState({ ...state, rotation: state.rotation + 90 })}
-						onScaleChange={(e) => handleScaleChange(e)}
-						imgScale={state.imgScale}
-						onMirrorClick={() => setState({ ...state, mirrorImg: !state.mirrorImg })}
-						onResetClick={() => setState(initialState)}
-					/>
 					<MemeTextControl
 						onChange={handleMemeTextChange}
 						topText={state.topText}
@@ -102,7 +94,14 @@ const App: React.FC = () => {
 						bottomText={state.bottomText}
 						bottomColor={bottomColor}
 						setBottomColor={setBottomColor}
-						// displayBottomPalette={displayBottomPalette}
+					/>
+					<ImageActionControls
+						onLeftRotateClick={() => setState({ ...state, rotation: state.rotation - 90 })}
+						onRightRotateClick={() => setState({ ...state, rotation: state.rotation + 90 })}
+						onScaleChange={(e) => handleScaleChange(e)}
+						imgScale={state.imgScale}
+						onMirrorClick={() => setState({ ...state, mirrorImg: !state.mirrorImg })}
+						onResetClick={() => setState(initialState)}
 					/>
 				</div>
 			)}

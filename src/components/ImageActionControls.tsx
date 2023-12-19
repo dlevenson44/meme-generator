@@ -22,18 +22,30 @@ const ImageActionControls: React.FC<ImageActionControlsProps> = ({
 }) => {
 	return (
 		<div className="actions-container">
-			<button title="Rotate Left" onClick={onLeftRotateClick}><MdOutlineRotateLeft /></button>
-			<button title="Rotate Right" onClick={onRightRotateClick}><MdOutlineRotateRight /></button>
-			<input
-				className="scale-img-input"
-				type="number"
-				placeholder="Enter Image URL To Get Started!"
-				onChange={onScaleChange}
-				value={imgScale}
-			/>
-			<span className="input-end-adornment">%</span>
-			<button title="Mirror Image" onClick={onMirrorClick}><GoMirror /></button>
-			<button title="Reset Image" onClick={onResetClick}>Reset</button>
+			<h4>Image Control Tools</h4>
+			<div className="rotate-container">
+				<button className="rotate-buttons" title="Rotate Left" onClick={onLeftRotateClick}>
+					Rotate Left{' '}<MdOutlineRotateLeft />
+				</button>
+				<button className="rotate-buttons" title="Mirror Image" onClick={onMirrorClick}>
+					Mirror Image {'  '}<GoMirror />
+				</button>
+				<button className="rotate-buttons" title="Rotate Right" onClick={onRightRotateClick}>
+					Rotate Right{' '}<MdOutlineRotateRight />
+				</button>
+			</div>
+			<div className="scale-reset-controls">
+				<input
+					className="scale-img-input"
+					type="number"
+					placeholder="Enter Image URL To Get Started!"
+					onChange={onScaleChange}
+					value={imgScale}
+					style={{ marginRight: '8px' }}
+				/>
+				<span className="input-end-adornment">%</span>
+				<button title="Reset Image" onClick={onResetClick} style={{ marginLeft: '8px' }}>Reset</button>
+			</div>
 		</div>
 	)
 }
