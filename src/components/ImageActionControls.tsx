@@ -31,7 +31,7 @@ const ImageActionControls: React.FC<ImageActionControlsProps> = ({
 				onChange={onScaleChange}
 				value={imgScale}
 			/>
-			<span>%</span>
+			<span className="input-end-adornment">%</span>
 			<button title="Mirror Image" onClick={onMirrorClick}><GoMirror /></button>
 			<button title="Reset Image" onClick={onResetClick}>Reset</button>
 		</div>

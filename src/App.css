@@ -44,6 +44,12 @@
   width: 20%;
 }
 
+.input-end-adornment {
+  position: absolute;
+  margin-left: -18px;
+  margin-top: 2px;
+}
+
 
 /* Sample Image */
 /* https://hips.hearstapps.com/hmg-prod/images/little-cute-maltipoo-puppy-royalty-free-image-1652926025.jpg?crop=0.444xw:1.00xh;0.129xw,0&resize=980:* */

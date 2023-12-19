@@ -1,10 +1,10 @@
 import React from 'react'
 import './App.css'
 
-import { TopContent, ImageActionControls } from './components'
+import { TopContent, ImageActionControls, MemeContent } from './components'
 import { imageUrlValidator } from './helpers/validations'
 
-interface AppState {
+export interface AppState {
 	imgUrl: string
 	error: boolean
 	rotation: number
@@ -13,7 +13,6 @@ interface AppState {
 }
 
 const initialState = {
-	// imgUrl: '',
 	imgUrl: 'https://hips.hearstapps.com/hmg-prod/images/little-cute-maltipoo-puppy-royalty-free-image-1652926025.jpg?crop=0.444xw:1.00xh;0.129xw,0&resize=980:*',
 	error: false,
 	rotation: 0,
@@ -67,18 +66,12 @@ const App: React.FC = () => {
 						onMirrorClick={() => setState({ ...state, mirrorImg: !state.mirrorImg })}
 						onResetClick={() => setState(initialState)}
 					/>
-					<div className="img-container">
-						<img
-							className="url-image"
-							style={{
-								transform: `rotate(${state.rotation}deg) scaleX(${state.mirrorImg ? 1 : -1})`,
-								maxHeight: `${state.imgScale}%`,
-								maxWidth: `${state.imgScale}%`
-							}}
-							alt="Broken Image :("
-							src={state.imgUrl}
-						/>
-					</div>
+					<MemeContent
+						imgUrl={state.imgUrl}
+						rotation={state.rotation}
+						imgScale={state.imgScale}
+						mirrorImg={state.mirrorImg}
+					/>
 				</div>
 			)}
 		</div>
