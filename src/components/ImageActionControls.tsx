@@ -45,4 +45,11 @@ const ImageActionControls: React.FC<ImageActionControlsProps> = ({
 	)
 }
 
+/**
+ *     width: 20%;
+    position: absolute;
+    margin-left: 40%;
+    margin-top: 30%;
+ */
+
 export default ImageActionControls

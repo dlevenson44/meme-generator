@@ -39,7 +39,7 @@ const MemeTextControl: React.FC<MemeTextControlProps> = ({
 					onChange={onChange}
 				/>
 				{topToggle ? (
-					<div>
+					<div className="color-picker">
 						<ColorPicker
 							hideAlpha
 							hideInput
@@ -69,7 +69,7 @@ const MemeTextControl: React.FC<MemeTextControlProps> = ({
 					onChange={onChange}
 				/>
 				{bottomToggle ? (
-					<div>
+					<div className="color-picker">
 						<ColorPicker
 							hideAlpha
 							hideInput

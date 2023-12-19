@@ -133,3 +133,9 @@
 .scale-reset-controls {
   width: 80%;
 }
+
+.color-picker {
+  position: absolute;
+  width: 20%;
+  margin-left: 60%;
+}
