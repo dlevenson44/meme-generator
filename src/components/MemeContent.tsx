@@ -24,7 +24,7 @@ const MemeContent: React.FC<MemeContentProps> = ({
 			<img
 				className="url-image"
 				style={{
-					transform: `rotate(${rotation}deg) scaleX(${mirrorImg ? 1 : -1})`,
+					transform: `rotate(${rotation}deg) scaleX(${mirrorImg ? -1 : 1})`,
 					maxHeight: `${imgScale}%`,
 					maxWidth: `${imgScale}%`
 				}}

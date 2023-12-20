@@ -1,22 +1,26 @@
+import debounce from 'debounce'
 import validator from 'validator'
 
-const fileTypeValidation = (url: string): boolean => {
-	const validFileTypes: string[] = ['.png', '.jpg', '.jpeg', '.gif']
-	let validCheck = false
-	validFileTypes.forEach(type => {
-		const capitalized = type.toUpperCase()
-		if (url.includes(type) || url.includes(capitalized)) {
-			validCheck = true
+const checkImage = (url: string) => {
+	const request = new XMLHttpRequest()
+	request.open('GET', url, true)
+	request.send()
+	request.onload = () => {
+		if (request.status == 200) {
+			return true
+		} else {
+			return false
 		}
-	})
-	return validCheck
+	}
 }
 
-export const imageUrlValidator = (url: string): boolean => {
+export const imageUrlValidator = async (url: string) => {
 	const isValidUrl = validator.isURL(url, {
 		protocols: ['http', 'https'],
 		require_tld: true,
 	})
-	const isImgUrl = fileTypeValidation(url)
-	return isValidUrl && isImgUrl
+	if (!isValidUrl) return false
+	const imgCheck = await checkImage(url)
+	const isImgUrl = debounce(() => imgCheck, 500)
+	return isImgUrl
 }
