@@ -47,7 +47,7 @@ const MemeContent: React.FC<MemeContentProps> = ({
 					color: bottomColor.hex,
 					transform: `rotate(${rotation}deg)`,
 					fontSize: `${imgScale}%`,
-					top: `${(imgScale / 2) + 7.5}%`,
+					top: `${(imgScale / 2) + 10}%`,
 				}}
 			>
 				{bottomText}

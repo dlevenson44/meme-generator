@@ -14,13 +14,13 @@ const checkImage = (url: string) => {
 	}
 }
 
-export const imageUrlValidator = async (url: string) => {
+export const imageUrlValidator = (url: string) => {
 	const isValidUrl = validator.isURL(url, {
 		protocols: ['http', 'https'],
 		require_tld: true,
 	})
 	if (!isValidUrl) return false
-	const imgCheck = await checkImage(url)
+	const imgCheck = checkImage(url)
 	const isImgUrl = debounce(() => imgCheck, 500)
 	return isImgUrl
 }
